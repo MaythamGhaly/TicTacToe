@@ -19,19 +19,21 @@ window.onload = () => {
     
 
      const play =(e) => {
-        const id = e.currenttarget.getAttribute("cellindex")
-        if (arr[id]!= "" || !run){
-            debugger
-            return;
-        }
-        debugger
-        arr[id]=player
-        block.textcontent=player
+        status.innerText=`${player} turn`
+        const index=e.currentTarget
+        index.dataset.id
+        // if (arr[index]!= "" || !run){
+        //     debugger
+        //     return;
+        // }
+        
+        arr[index]=player
+        block.style.background="red"
+        block.textcontent="x"
         changeplayer()
         checkwinner()
     }
     const changeplayer = () => {
-        debugger
         if(player == "X"){
             player="O"
             status.innerText="O turn"
@@ -43,14 +45,16 @@ window.onload = () => {
     }
     const checkwinner= () => {
         for (i=0 ; i< Conditions.length ; i++){
-            const condition=conditions[i]
+            const condition=Conditions[i]
             const A = arr[condition[0]]
             const B = arr[condition[1]]
             const C = arr[condition[2]]
             if (A == "" || B == "" || C == ""){
+                debugger
                 continue;
             }
             if( A == B && B == C){
+                debugger
                 win=true
                 break;
             }
