@@ -2,16 +2,18 @@
 .title{
     font-size: 24px;
     font-weight: bold;
+    text-align: center;
 }
 .container {
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-template-rows: 33% 33% 33%;
-    max-width: 300px;
+    grid-template-columns: repeat(3,auto);
+    max-width: 300px;;
+   
 }
 .block {
     border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0 0 0 2px;
     min-width: 100px;
     min-height: 100px;
     display: flex;
@@ -19,4 +21,8 @@
     align-items: center;
     font-size: 50px;
     cursor: pointer;
+}
+.resert-btn, .status {
+    text-align: center;
+    margin-top: 30px;
 }

@@ -1,10 +1,8 @@
 window.onload = () => {
-    let blocks = document.querySelectorAll('.block')
-    let arr=["","","","","","","","",""]
+    const blocks = document.querySelectorAll('.block')
     const status=document.getElementById("status")
-    run=false
-    let player="X"
-    let win = false
+    const restart=document.getElementById("reset")
+    let arr=["","","","","","","","",""]
     const Conditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -14,33 +12,31 @@ window.onload = () => {
         [2, 5, 8],
         [0, 4, 8],
         [2, 4, 6]
-     ];
-    
+     ]
+    run=true
+    let player="X"
+    let win = false
+    status.innerHTML=`${player} turn`
     
 
      const play =(e) => {
-        status.innerText=`${player} turn`
-        const index=e.currentTarget
-        index.dataset.id
-        // if (arr[index]!= "" || !run){
-        //     debugger
-        //     return;
-        // }
-        
-        arr[index]=player
-        block.style.background="red"
-        block.textcontent="x"
-        changeplayer()
+        console.log(e.currentTarget.getAttribute("name"))
+        const Block_index=e.currentTarget.getAttribute("name")
+        if (arr[Block_index]!= "" || !run){
+            return;
+        }
+        arr[Block_index]=player
+        e.currentTarget.textContent=player
         checkwinner()
     }
     const changeplayer = () => {
         if(player == "X"){
             player="O"
-            status.innerText="O turn"
+            status.innerText= `${player} turn.`
         }
         else{
             player="X"
-            status.innerText="X turn"
+            status.innerText=`${player} turn.`
         }
     }
     const checkwinner= () => {
@@ -50,11 +46,9 @@ window.onload = () => {
             const B = arr[condition[1]]
             const C = arr[condition[2]]
             if (A == "" || B == "" || C == ""){
-                debugger
                 continue;
             }
             if( A == B && B == C){
-                debugger
                 win=true
                 break;
             }
@@ -71,19 +65,5 @@ window.onload = () => {
             changeplayer()
         }
     }
-    for (block of blocks) block.addEventListener("click",play);
+    for (block of blocks) block.addEventListener("click",play); 
 }      
-            
-            
-//             else{
-//                 if(player == "X"){
-//                     player="O"
-//                 }
-//                 else{
-//                     player="X"
-//                 }
-
-//             }
-//         }
-//    }
-// }
