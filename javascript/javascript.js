@@ -55,10 +55,12 @@ window.onload = () => {
         }
         if (win){
             status.innerText=`${player} win!`
+            status.style.color="green"
             run=false
         }
         else if (!arr.includes("")){
             status.innerText=`draw!`
+            status.style.color="red"
             run=false
         }
         else {
