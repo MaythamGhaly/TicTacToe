@@ -65,5 +65,10 @@ window.onload = () => {
             changeplayer()
         }
     }
-    for (block of blocks) block.addEventListener("click",play); 
+    const Restart = () =>{
+        location.reload()
+    }
+
+    for (block of blocks) block.addEventListener("click",play);
+    restart.addEventListener("click",Restart)
 }      
